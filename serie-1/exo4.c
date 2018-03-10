@@ -12,17 +12,23 @@ typedef struct Str_t Str;
 
 // Replaces spaces in a string and invert characters
 char* Transform(Str *chaine){
+  // Length of the string
   int length = strlen(chaine->first);
 
-  // sizeof(char) optional since a char is always 1 byte
+  // Init of a string the same size of the argument
+  // -> sizeof(char) optional since a char is always 1 byte
   char *new_chaine = malloc(sizeof(char) * length);
-  strcpy(new_chaine, chaine->first);
 
-  char *current = chaine->first+length-1;
+  // Pointer to iterate through the string argument
+  char *current;
 
+  // Iteration to reverse characters and replace spaces
   for (int i = 0; i < length; i++) {
+    // Points from last to first char
     current = chaine->first + (length-1) - i;
     if (*current == ' ')
+      // Pointer from first to last char
+      // Replace the space
       *(new_chaine + i) = chaine->subs;
     else
       *(new_chaine + i) = *current;
@@ -32,9 +38,9 @@ char* Transform(Str *chaine){
 }
 
 int main(){
-  char phrase[] = "1 345";
+  char phrase[] = "1 345 ";
 
-  Str arg = { phrase, '|' };
+  Str arg = { phrase, '@' };
   Str *p_arg = &arg;
 
   char *transformed = Transform(p_arg);
