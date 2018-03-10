@@ -17,7 +17,7 @@ char* Transform(Str *chaine){
 
   // Init of a string the same size of the argument
   // -> sizeof(char) optional since a char is always 1 byte
-  char *new_chaine = malloc(sizeof(char) * length);
+  char *new_chaine = malloc(sizeof(char) * length + 1);
 
   // Pointer to iterate through the string argument
   char *current;
@@ -38,7 +38,7 @@ char* Transform(Str *chaine){
 }
 
 int main(){
-  char phrase[] = "1 345 ";
+  char phrase[] = "1 34";
 
   Str arg = { phrase, '@' };
   Str *p_arg = &arg;
